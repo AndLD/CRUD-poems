@@ -1,0 +1,30 @@
+{
+  "name": "baz-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "postinstall": "link-module-alias"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "link-module-alias": "^1.2.0",
+    "log4js": "^6.3.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "nodemon": "^2.0.7"
+  },
+  "_moduleAliases": {
+    "$controllers": "controllers",
+    "$helpers": "helpers",
+    "$models": "models",
+    "$mysql": "db/mysql.js",
+    "$src": "/"
+  }
+}
