@@ -1,0 +1,26 @@
+.poem {
+    position: relative;
+    margin: 10px;
+    padding: 30px 30px 50px 30px;
+    border: 1px dashed #ccc;
+}
+.poem .card-title {
+    margin-bottom: 20px;
+}
+.poem .card-body .card-text p {
+    margin: 0;
+}
+
+.poem .controls {
+    position: absolute;
+    bottom: 15px;
+}
+.poem .btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease 0.3s;
+}
+.poem:hover .btn {
+    opacity: 1;
+    visibility: visible;
+}
