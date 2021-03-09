@@ -40,7 +40,7 @@ function Modal() {
     useEffect(() => {
         if (!(modal.button.text && modal.button.text.includes('Удал'))) {
             content.title.current.value = modal.content.title || '';
-            content.text.current.value = modal.content.text || '';
+            content.text.current.value = modal.content.text ? modal.content.text.replace(/\044/g, '\n') : '';
         }
     }, [modal]);
 
@@ -71,7 +71,7 @@ function Modal() {
                         }
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                         <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={request}>{ modal.button.text }</button>
                     </div>
                 </div>
