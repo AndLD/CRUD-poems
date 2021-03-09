@@ -2,7 +2,7 @@
     position: relative;
     margin: 10px;
     padding: 30px 30px 50px 30px;
-    border: 1px dashed #ccc;
+    /* border: 1px dashed #ccc; */
 }
 .poem .card-title {
     margin-bottom: 20px;
