@@ -6,7 +6,7 @@ import Poem from './Poem';
 function PoemsList() {
     const [poems, setPoems] = useState([]);
 
-    useEffect(async () => {
+    async function updatePoemsList() {
         const poems = await PoemService.fetchPoems();
         if (poems && poems.length > 0)
             setPoems(poems.map((poem, i) => React.createElement(Poem, {
@@ -15,6 +15,12 @@ function PoemsList() {
                 title: poem.title,
                 text: poem.text
             })));
+    }
+
+    useEffect(() => {
+        PoemService.thenActivity = updatePoemsList;
+        updatePoemsList();
+        
         // setPoems([
         //     React.createElement(Poem, {
         //         key: 'poem0',

@@ -1,6 +1,7 @@
 const BACKEND_URL = 'http://localhost:3000';
 
 const PoemService = {
+    // Получение стихов
     fetchPoems: async function() {
         const res = await fetch(`${BACKEND_URL}/poem`, {
             headers: {
@@ -23,7 +24,7 @@ const PoemService = {
             return null;
         }
     },
-
+    // Добавление стиха
     addPoem: async function(poem) {
         const res = await fetch(`${BACKEND_URL}/poem`, {
             method: 'POST',
@@ -33,6 +34,8 @@ const PoemService = {
             body: JSON.stringify(poem)
         });
         if (res.ok) {
+            this.thenActivity();
+
             this.addToast('Poem posted successfully!', {
                 appearance: 'success',
                 autoDismiss: true
@@ -46,7 +49,7 @@ const PoemService = {
         }
         return null;
     },
-
+    // Редактирование стиха
     updatePoem: async function(update, id) {
         const res = await fetch(`${BACKEND_URL}/poem/${id}`, {
             method: 'PUT',
@@ -56,6 +59,8 @@ const PoemService = {
             body: JSON.stringify(update)
         });
         if (res.ok) {
+            this.thenActivity();
+
             this.addToast(`Poem with id ${id} updated successfully!`, {
                 appearance: 'success',
                 autoDismiss: true
@@ -69,12 +74,14 @@ const PoemService = {
         }
         return null;
     },
-
+    // Удаление стиха
     deletePoem: async function(id) {
         const res = await fetch(`${BACKEND_URL}/poem/${id}`, {
             method: 'delete'
         });
         if (res.ok) {
+            this.thenActivity();
+
             this.addToast(`Poem with id ${id} deleted successfully!`, {
                 appearance: 'success',
                 autoDismiss: true
