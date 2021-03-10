@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../assets/css/poem.css';
 import { Context } from '../context';
@@ -6,7 +6,13 @@ import { Context } from '../context';
 function Poem({poemId, title, text}) {
     [poemId] = useState(poemId);
 
-    const [rows] = useState(text ? text.split('$').map((row, i) => row.length > 0 ? React.createElement('p', { key: `poemRow${i}` }, row) : React.createElement('br', { key: `poemRow${i}` })) : []); 
+    function updateRows() {
+        return text ? text.split('$').map((row, i) => row.length > 0 ? React.createElement('p', { key: `poemRow${i}` }, row) : React.createElement('br', { key: `poemRow${i}` })) : [];
+    }
+    const [rows, setRows] = useState(updateRows()); 
+    useEffect(() => {
+        setRows(updateRows());
+    }, [text]);
 
     const { modalState } = useContext(Context);
     const [, setModal] = modalState;
