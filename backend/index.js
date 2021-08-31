@@ -1,11 +1,14 @@
 const logger = require('$helpers/logger');
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const { controller } = require('$helpers/decorators');
 const poemControllers = require('./controllers/poem');
 const mysql = require('$mysql');
 
 const app = express();
+
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 // Подключаемся к MySQL
 mysql.init();
